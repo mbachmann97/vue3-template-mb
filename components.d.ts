@@ -12,10 +12,9 @@ declare module '@vue/runtime-core' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElLink: typeof import('element-plus/es')['ElLink']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
-    ElSwitchv2: typeof import('element-plus/es')['ElSwitchv2']
-    ElText: typeof import('element-plus/es')['ElText']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
+    Matrix3: typeof import('./src/components/Matrix3.vue')['default']
+    MatrixThree: typeof import('./src/components/MatrixThree.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

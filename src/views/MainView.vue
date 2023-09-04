@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
 import { ElMessage, ElNotification } from 'element-plus'
 import { random as _random } from 'lodash'
+import Matrix3 from '@/components/Matrix3.vue'
+import type { MatrixOptions, MatrixPosition } from '@/types/Matrix'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -19,6 +21,19 @@ const testNotification = () => {
     type: 'success'
   })
 }
+
+const matrixOptions: MatrixOptions = {
+  size: '21 rem',
+  color: '#409EFF',
+  labelSize: '0.8rem',
+}
+
+const matrixPosition = ref<MatrixPosition>('11')
+
+const handleMatrixEvent = (position: MatrixPosition) => {
+  console.log(position)
+  matrixPosition.value = position
+}
 </script>
 
 <template>
@@ -31,6 +46,7 @@ const testNotification = () => {
       <el-icon><sunny v-if="isDark" /><moon-night v-else /></el-icon>
     </el-link>
     random number from lodash: {{ _random(0, 5) }}
+    <Matrix3 class="mt-5" :active-matrix-position="matrixPosition" :options="matrixOptions" :use-simple-labels="true" @update:activeMatrixPosition="handleMatrixEvent" />
   </main>
 </template>
 
