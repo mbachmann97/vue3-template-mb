@@ -23,7 +23,7 @@ const testNotification = () => {
 }
 
 const matrixOptions: MatrixOptions = {
-  size: '21 rem',
+  size: '20 rem',
   color: '#409EFF',
   labelSize: '0.8rem',
 }

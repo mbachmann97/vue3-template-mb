@@ -131,7 +131,17 @@ const hoverShadow = computed(() => {
 }
 
 .active-cell {
-  background-color: v-bind(color);
+  --c1: color-mix(in srgb, #ffffff 0%, v-bind(color) 100%);
+  --c2: color-mix(in srgb, #ffffff 25%, v-bind(color) 75%);
+  --c3: color-mix(in srgb, #ffffff 50%, v-bind(color) 50%);
+  --c4: color-mix(in srgb, #ffffff 75%, v-bind(color) 25%);
+  --c5: color-mix(in srgb, #ffffff 25%, v-bind(color) 75%);
+  --c6: color-mix(in srgb, #ffffff 0%, v-bind(color) 100%);
+  --c7: color-mix(in srgb, #000000 50%, v-bind(color) 50%);
+
+  background: linear-gradient(-45deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5), var(--c6), var(--c7));
+  background-size: 300% 300%;
+  animation: gradient 10s ease infinite;
 }
 
 .left-label, .simple-label-left {
@@ -178,5 +188,17 @@ const hoverShadow = computed(() => {
 
 .pointer {
   cursor: pointer;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 </style>
