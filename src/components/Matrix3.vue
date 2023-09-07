@@ -60,29 +60,29 @@ const hoverShadow = computed(() => {
     <div>
       <div class="matrix-row">
         <span v-if="!useSimpleLabels" class="left-label">{{ labels[0] }}</span>
-        <div :class="{'matrix-cell': true, cell: true, 'active-cell': activeMatrixPosition === '20', pointer: !readonly}" @click="cellClicked('20')">
+        <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '20', pointer: !readonly}" @click="cellClicked('20')">
         </div>
-        <div :class="{'matrix-cell': true, cell: true, 'active-cell': activeMatrixPosition === '21', pointer: !readonly}" @click="cellClicked('21')">
+        <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '21', pointer: !readonly}" @click="cellClicked('21')">
         </div>
-        <div :class="{'matrix-cell-right': true, cell: true, 'active-cell': activeMatrixPosition === '22', pointer: !readonly}" @click="cellClicked('22')">
+        <div :class="{'matrix-cell-right': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '22', pointer: !readonly}" @click="cellClicked('22')">
         </div>
       </div>
       <div class="matrix-row">
         <span v-if="!useSimpleLabels" class="left-label">{{ labels[1] }}</span>
-        <div :class="{'matrix-cell': true, cell: true, 'active-cell': activeMatrixPosition === '10', pointer: !readonly}" @click="cellClicked('10')">
+        <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '10', pointer: !readonly}" @click="cellClicked('10')">
         </div>
-        <div :class="{'matrix-cell': true, cell: true, 'active-cell': activeMatrixPosition === '11', pointer: !readonly}" @click="cellClicked('11')">
+        <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '11', pointer: !readonly}" @click="cellClicked('11')">
         </div>
-        <div :class="{'matrix-cell-right': true, cell: true, 'active-cell': activeMatrixPosition === '12', pointer: !readonly}" @click="cellClicked('12')">
+        <div :class="{'matrix-cell-right': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '12', pointer: !readonly}" @click="cellClicked('12')">
         </div>
       </div>
       <div class="matrix-row">
         <span v-if="!useSimpleLabels" class="left-label">{{ labels[2] }}</span>
-        <div :class="{'matrix-cell-bottom': true, cell: true, 'active-cell': activeMatrixPosition === '00', pointer: !readonly}" @click="cellClicked('00')">
+        <div :class="{'matrix-cell-bottom': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '00', pointer: !readonly}" @click="cellClicked('00')">
         </div>
-        <div :class="{'matrix-cell-bottom': true, cell: true, 'active-cell': activeMatrixPosition === '01', pointer: !readonly}" @click="cellClicked('01')">
+        <div :class="{'matrix-cell-bottom': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '01', pointer: !readonly}" @click="cellClicked('01')">
         </div>
-        <div :class="{'matrix-cell-last': true, cell: true, 'active-cell': activeMatrixPosition === '02', pointer: !readonly}" @click="cellClicked('02')">
+        <div :class="{'matrix-cell-last': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '02', pointer: !readonly}" @click="cellClicked('02')">
         </div>
       </div>
       <div v-if="!useSimpleLabels" class="bottom-labels-container">
@@ -117,6 +117,8 @@ const hoverShadow = computed(() => {
   width: v-bind(cellHeight);
   border-top: 1px solid v-bind(color);
   border-left: 1px solid v-bind(color);
+  background-color: transparent;
+  transition: all 250ms ease;
 }
 .matrix-cell-right, .matrix-cell-last {
   border-right: 1px solid v-bind(color);
@@ -188,6 +190,35 @@ const hoverShadow = computed(() => {
 
 .pointer {
   cursor: pointer;
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
 }
 
 @keyframes gradient {
