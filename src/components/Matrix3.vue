@@ -26,6 +26,10 @@ const props = defineProps({
   useSimpleLabels: {
     type: Boolean,
     default: false
+  },
+  useAllLabels: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -54,12 +58,12 @@ const hoverShadow = computed(() => {
 <template>
 <div class="matrix-container">
   <div class="matrix">
-    <span v-if="useSimpleLabels" class="simple-label-left">
+    <span v-if="useSimpleLabels || useAllLabels" class="simple-label-left">
       {{ simpleLabels[1] }}
     </span>
     <div>
       <div class="matrix-row">
-        <span v-if="!useSimpleLabels" class="left-label">{{ labels[0] }}</span>
+        <span v-if="!useSimpleLabels || useAllLabels" class="left-label">{{ labels[0] }}</span>
         <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '20', pointer: !readonly}" @click="cellClicked('20')">
         </div>
         <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '21', pointer: !readonly}" @click="cellClicked('21')">
@@ -68,7 +72,7 @@ const hoverShadow = computed(() => {
         </div>
       </div>
       <div class="matrix-row">
-        <span v-if="!useSimpleLabels" class="left-label">{{ labels[1] }}</span>
+        <span v-if="!useSimpleLabels || useAllLabels" class="left-label">{{ labels[1] }}</span>
         <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '10', pointer: !readonly}" @click="cellClicked('10')">
         </div>
         <div :class="{'matrix-cell': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '11', pointer: !readonly}" @click="cellClicked('11')">
@@ -77,7 +81,7 @@ const hoverShadow = computed(() => {
         </div>
       </div>
       <div class="matrix-row">
-        <span v-if="!useSimpleLabels" class="left-label">{{ labels[2] }}</span>
+        <span v-if="!useSimpleLabels || useAllLabels" class="left-label">{{ labels[2] }}</span>
         <div :class="{'matrix-cell-bottom': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '00', pointer: !readonly}" @click="cellClicked('00')">
         </div>
         <div :class="{'matrix-cell-bottom': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '01', pointer: !readonly}" @click="cellClicked('01')">
@@ -85,12 +89,12 @@ const hoverShadow = computed(() => {
         <div :class="{'matrix-cell-last': true, ripple: true, cell: true, 'active-cell': activeMatrixPosition === '02', pointer: !readonly}" @click="cellClicked('02')">
         </div>
       </div>
-      <div v-if="!useSimpleLabels" class="bottom-labels-container">
+      <div v-if="!useSimpleLabels || useAllLabels" class="bottom-labels-container">
         <span class="bottom-label">{{ labels[3] }}</span>
         <span class="bottom-label">{{ labels[4] }}</span>
         <span class="bottom-label">{{ labels[5] }}</span>
       </div>
-      <span v-else class="simple-label-bottom">
+      <span v-if="useSimpleLabels || useAllLabels" class="simple-label-bottom">
         {{ simpleLabels[0] }}
       </span>
     </div>
