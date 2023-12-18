@@ -43,6 +43,7 @@ const handleMatrixEvent = (position: MatrixPosition) => {
     <the-header />
     <el-button @click="testMessage" type="danger">Test</el-button>
     <el-button @click="testNotification" type="success">Test 2</el-button>
+    <el-button type="primary">Test 2</el-button>
     <el-time-picker v-model="time"></el-time-picker>
     <span class="text-2xl text-red-600">{{ time }}</span>
     <el-link class="dark-toggle" size="large" :underline="false" @click="toggleDark()">

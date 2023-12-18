@@ -9,6 +9,12 @@
   font-weight: normal;
 }
 
+/* TODO: finish override color variables */
+:root, html, html.dark {
+  --el-color-primary: violet !important;
+  --el-color-primary-light-3: rgb(160, 29, 160) !important;
+}
+
 body {
   transition: color 0.5s, background-color 0.5s;
   font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',

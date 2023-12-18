@@ -22,6 +22,7 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElText: typeof import('element-plus/es')['ElText']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
+    ListItem: typeof import('./src/components/ListItem.vue')['default']
     Matrix: typeof import('./src/components/Matrix.vue')['default']
     Matrix3: typeof import('./src/components/Matrix3.vue')['default']
     MatrixThree: typeof import('./src/components/MatrixThree.vue')['default']

@@ -2,7 +2,6 @@
 import { onMounted, ref } from 'vue'
 import { SwitchButton, UserFilled } from '@element-plus/icons-vue'
 import axios from 'axios'
-import { ca } from 'element-plus/es/locale'
 
 const props = defineProps({
   menuIndex: {
@@ -43,7 +42,7 @@ const handleLogout = () => {
           </div>
           <div class="center-vertical" :span="16">
             <el-text class="small-line-height">Markus Bachmann</el-text>
-            <el-text class="small-line-height" type="info" size="small">Digital Business and Production</el-text>
+            <el-text class="small-line-height" type="info" size="small">Test Department of serious Business</el-text>
           </div>
         </div>
       </template>
@@ -66,7 +65,7 @@ const handleLogout = () => {
 .container {
   display: flex;
   flex-direction: row;
-  gap: 0.6rem;
+  gap: 0.6rem; 
   align-items: center;
 }
 
